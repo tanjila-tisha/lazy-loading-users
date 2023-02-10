@@ -1,14 +1,26 @@
-import "./App.css";
+import { useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import UserList from "./UserList";
+import Loader from "./components/Loader";
+import "./App.css";
+import UserList from "./components/UserList";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <Provider store={store}>
-      <div className="App-container">
-        {" "}
-        <UserList />
+      <div className="app-container">
+        {loading ? (
+          <Loader />
+        ) : (
+            <UserList />
+        )}
       </div>
     </Provider>
   );

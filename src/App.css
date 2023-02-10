@@ -1,9 +1,4 @@
-.App {
-  text-align: center;
-}
-
-
-.App-container {
+.app-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,9 +7,26 @@
   font-size: calc(10px + 2vmin);
 }
 
+.list-heading {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  padding: 40px;
+  background-color: lightgray;
+}
 
-.test{
-  overflow: scroll;
-  height: 50px;
-  width:  200px;
+.userItem-container {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid lightgray;
+}
+
+.user-avatar {
+  border-radius: 50%;
+}
+
+.user-name {
+  padding-left: 30px;
+  padding-right: 100px;
 }
