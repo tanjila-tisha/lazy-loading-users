@@ -1,15 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { getPage, getTotal, getUsers, loadUsers } from "../redux/usersReducer";
 import { AppDispatch } from "../store";
 import UserItem from "./UserItem";
 import "../index.css";
-import { useEffect } from "react";
-import Loader from "./Loader";
+import { useEffect, useState } from "react";
 
 const UserList = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const [loadMore, setLoadMore] = useState<Boolean>(true);
   const users = useSelector(getUsers);
   const page = useSelector(getPage);
   const total = useSelector(getTotal);
@@ -18,20 +17,24 @@ const UserList = (): JSX.Element => {
     dispatch(loadUsers());
   }, [dispatch]);
 
+  useEffect(() => {
+    const handleOnScroll = () => {
+      if (total === users.length) {
+        setLoadMore(false);
+        return;
+      }
+      dispatch(loadUsers(page + 1));
+    };
+    window.addEventListener("scroll", handleOnScroll);
+    return () => {
+      window.removeEventListener("scroll", handleOnScroll);
+    };
+  }, [dispatch, page, loadMore, total, users]);
+
   return (
     <div>
       <div className="list-heading">Users</div>
-      <InfiniteScroll
-        dataLength={total}
-        next={() => dispatch(loadUsers(page + 1))}
-        hasMore={!(users.length === total)}
-        endMessage={<p className="end-message">Yay! You have seen it all</p>}
-        loader={
-          <div className="loading-message" key={0}>
-            <Loader />
-          </div>
-        }
-      >
+      <div>
         {users.map((user) => (
           <UserItem
             firstName={user.first_name}
@@ -40,7 +43,8 @@ const UserList = (): JSX.Element => {
             key={`${user.id}-${user.email}`}
           />
         ))}
-      </InfiniteScroll>
+        {!loadMore && <p className="end-message">Yay! You have seen it all</p>}
+      </div>
     </div>
   );
 };
