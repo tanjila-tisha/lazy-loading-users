@@ -30,3 +30,12 @@
   padding-left: 30px;
   padding-right: 100px;
 }
+
+.end-message {
+  font-weight: bold;
+  text-align: center;
+}
+
+.loading-message {
+  margin: 10px 0px;
+}

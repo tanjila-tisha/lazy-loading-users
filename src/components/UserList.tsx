@@ -1,40 +1,48 @@
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers, loadUsers } from "../redux/usersReducer";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { getPage, getTotal, getUsers, loadUsers } from "../redux/usersReducer";
 import { AppDispatch } from "../store";
 import UserItem from "./UserItem";
 import "../index.css";
+import { useEffect } from "react";
+import Loader from "./Loader";
 
 const UserList = (): JSX.Element => {
-    const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch>();
 
-    const users = useSelector(getUsers);
+  const users = useSelector(getUsers);
+  const page = useSelector(getPage);
+  const total = useSelector(getTotal);
 
-    useEffect(() => {
-        dispatch(loadUsers());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(loadUsers());
+  }, [dispatch]);
 
-    const onScroll = () => {
-       /* const scrollTop = document.documentElement.scrollTop
-        const scrollHeight = document.documentElement.scrollHeight
-        const clientHeight = document.documentElement.clientHeight
-        console.log('scrollTop', scrollTop);
-        console.log('scrollHeight', scrollHeight);
-        console.log('clientHeight', clientHeight);
-        if (scrollTop + clientHeight >= scrollHeight) {
-        }*/
-    }
-
-
-    console.log(users);
-    return (
-        <div>
-            <div className="list-heading">Users</div>
-            {users.map((user) => (
-                <UserItem firstName={user.first_name} lastName={user.last_name} avatar={user.avatar} key={user.id} />
-            ))}
-        </div>
-    );
+  return (
+    <div>
+      <div className="list-heading">Users</div>
+      <InfiniteScroll
+        dataLength={total}
+        next={() => dispatch(loadUsers(page + 1))}
+        hasMore={!(users.length === total)}
+        endMessage={<p className="end-message">Yay! You have seen it all</p>}
+        loader={
+          <div className="loading-message" key={0}>
+            <Loader />
+          </div>
+        }
+      >
+        {users.map((user) => (
+          <UserItem
+            firstName={user.first_name}
+            lastName={user.last_name}
+            avatar={user.avatar}
+            key={`${user.id}-${user.email}`}
+          />
+        ))}
+      </InfiniteScroll>
+    </div>
+  );
 };
 
 export default UserList;

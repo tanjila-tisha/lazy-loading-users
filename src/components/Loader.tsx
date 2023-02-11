@@ -2,8 +2,12 @@ import "../index.css";
 
 const Loader = (): JSX.Element => {
   return (
-    <div className="spinner-container">
-      <div className="loading-spinner"></div>
+    <div className="loader-container">
+      <div className="loader loader-2">
+        <div className="loader loader-1">
+          <div className="loader loader-0"></div>
+        </div>
+      </div>
     </div>
   );
 };
