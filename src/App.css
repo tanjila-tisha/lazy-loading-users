@@ -7,19 +7,24 @@
   font-size: calc(10px + 2vmin);
 }
 
+.user-container {
+  width: 100%;
+}
+
 .list-heading {
   display: flex;
   justify-content: center;
   font-weight: bold;
   padding: 40px;
-  background-color: lightgray;
+  background-color: rgb(237, 234, 234);
+  border-bottom: 1px solid lightgray;
 }
 
 .userItem-container {
   display: flex;
   align-items: center;
-  padding: 20px;
-  border-bottom: 2px solid lightgray;
+  padding: 25px;
+  border-bottom: 1px solid lightgray;
 }
 
 .user-avatar {
@@ -46,12 +51,13 @@
   from {
     height: 50px;
     width: 50px;
-    background-color: #a2f3b5;
+    background-color: #7FB900;
   }
+
   to {
     height: 80px;
     width: 80px;
-    background-color: #3cb8590e;
+    background-color: #D0E5A3;
   }
 }
 
@@ -59,12 +65,13 @@
   from {
     height: 80px;
     width: 80px;
-    background-color: #c3f7cf;
+    background-color: #D0E5A3;
   }
+
   to {
     height: 100px;
     width: 100px;
-    background-color: #c3f7cf2e;
+    background-color: #E5F1CC;
   }
 }
 
@@ -77,26 +84,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  align-content:center;
+  align-content: center;
   border-radius: 50%;
 }
 
 .loader-0 {
   width: 20px;
   height: 20px;
-  background-color: #3cb859;
+  background-color: #7FB900;
 }
 
 .loader-1 {
   width: 50px;
   height: 50px;
-  background-color: #a2f3b5;
+  background-color: #D0E5A3;
   animation: signal1 1.5s linear infinite;
 }
 
 .loader-2 {
   width: 100px;
   height: 100px;
-  background-color: #c3f7cf;
+  background-color: #E5F1CC;
   animation: signal2 2s linear infinite;
 }

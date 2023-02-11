@@ -32,7 +32,7 @@ const UserList = (): JSX.Element => {
   }, [dispatch, page, loadMore, total, users]);
 
   return (
-    <div>
+    <div className="user-container">
       <div className="list-heading">Users</div>
       <div>
         {users.map((user) => (
@@ -43,7 +43,7 @@ const UserList = (): JSX.Element => {
             key={`${user.id}-${user.email}`}
           />
         ))}
-        {!loadMore && <p className="end-message">Yay! You have seen it all</p>}
+        {!loadMore && <p className="end-message">There are no more users</p>}
       </div>
     </div>
   );
