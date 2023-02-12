@@ -3,9 +3,8 @@ import usersReducer from "./redux/usersReducer";
 
 export const store = configureStore({
   reducer: {
-     users: usersReducer,
+    users: usersReducer,
   },
-  devTools: true,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
