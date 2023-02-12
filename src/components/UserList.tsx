@@ -4,6 +4,7 @@ import { AppDispatch } from "../store";
 import UserItem from "./UserItem";
 import "../index.css";
 import { useEffect, useState } from "react";
+import { User } from "../types";
 
 const UserList = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
@@ -35,7 +36,7 @@ const UserList = (): JSX.Element => {
     <div className="user-container">
       <div className="list-heading">Users</div>
       <div>
-        {users.map((user) => (
+        {users.map((user : User) => (
           <UserItem
             firstName={user.first_name}
             lastName={user.last_name}

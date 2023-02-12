@@ -1,4 +1,4 @@
-export interface UserType {
+export interface User {
   id: number;
   email: string;
   first_name: string;
@@ -8,7 +8,7 @@ export interface UserType {
 
 export interface UsersState {
   loading: boolean;
-  users: Array<UserType>;
+  users: Array<User>;
   error: string;
   page: number;
   total: number;

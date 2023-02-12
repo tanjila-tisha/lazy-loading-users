@@ -1,6 +1,6 @@
 import { createAsyncThunk, createReducer } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { UserType, UsersState } from "../types";
+import { User, UsersState } from "../types";
 
 const initialState: UsersState = {
   loading: false,
@@ -45,7 +45,7 @@ const usersReducer = createReducer(initialState, (builder) => {
 });
 
 // Selectors
-export const getUsers = (state: RootState): Array<UserType> =>
+export const getUsers = (state: RootState): Array<User> =>
   state.users.users;
 export const getPage = (state: RootState): number => state.users.page;
 export const getTotal = (state: RootState): number => state.users.total;
