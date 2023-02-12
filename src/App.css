@@ -45,19 +45,16 @@
   margin: 10px 0px;
 }
 
-
 /** Loading Component **/
 @keyframes signal1 {
   from {
     height: 50px;
     width: 50px;
-    background-color: #7FB900;
   }
 
   to {
     height: 80px;
     width: 80px;
-    background-color: #D0E5A3;
   }
 }
 
@@ -65,16 +62,13 @@
   from {
     height: 80px;
     width: 80px;
-    background-color: #D0E5A3;
   }
 
   to {
     height: 100px;
     width: 100px;
-    background-color: #E5F1CC;
   }
 }
-
 
 .loader-container {
   display: flex;
@@ -91,19 +85,19 @@
 .loader-0 {
   width: 20px;
   height: 20px;
-  background-color: #7FB900;
+  background-color: #7fb900;
 }
 
 .loader-1 {
   width: 50px;
   height: 50px;
-  background-color: #D0E5A3;
-  animation: signal1 1.5s linear infinite;
+  background-color: #d0e5a3;
+  animation: signal1 2s linear infinite;
 }
 
 .loader-2 {
   width: 100px;
   height: 100px;
-  background-color: #E5F1CC;
+  background-color: #e5f1cc;
   animation: signal2 2s linear infinite;
 }

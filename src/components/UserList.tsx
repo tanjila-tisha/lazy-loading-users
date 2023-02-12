@@ -1,18 +1,17 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPage, getTotal, getUsers, loadUsers } from "../redux/usersReducer";
 import { AppDispatch } from "../store";
 import UserItem from "./UserItem";
-import "../index.css";
-import { useEffect, useState } from "react";
 import { User } from "../types";
 
 const UserList = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
-
-  const [loadMore, setLoadMore] = useState<Boolean>(true);
   const users = useSelector(getUsers);
   const page = useSelector(getPage);
   const total = useSelector(getTotal);
+
+  const [loadMore, setLoadMore] = useState<Boolean>(true);
 
   useEffect(() => {
     dispatch(loadUsers());
@@ -36,7 +35,7 @@ const UserList = (): JSX.Element => {
     <div className="user-container">
       <div className="list-heading">Users</div>
       <div>
-        {users.map((user : User) => (
+        {users.map((user: User) => (
           <UserItem
             firstName={user.first_name}
             lastName={user.last_name}

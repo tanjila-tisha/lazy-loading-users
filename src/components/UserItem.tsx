@@ -1,11 +1,10 @@
-import "../index.css";
-
 export interface UserProps {
   firstName: string;
   lastName: string;
   avatar: string;
 }
-const User = ({ firstName, lastName, avatar }: UserProps) => {
+
+const User = ({ firstName, lastName, avatar }: UserProps): JSX.Element => {
   return (
     <div className="userItem-container">
       <img src={avatar} alt="userPic" className="user-avatar" />

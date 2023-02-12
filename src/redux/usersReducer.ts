@@ -45,8 +45,7 @@ const usersReducer = createReducer(initialState, (builder) => {
 });
 
 // Selectors
-export const getUsers = (state: RootState): Array<User> =>
-  state.users.users;
+export const getUsers = (state: RootState): Array<User> => state.users.users;
 export const getPage = (state: RootState): number => state.users.page;
 export const getTotal = (state: RootState): number => state.users.total;
 export const getLoader = (state: RootState): boolean => state.users.loading;
